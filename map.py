@@ -6,6 +6,7 @@ lat = list(data["LAT"])
 lon = list(data["LON"])
 elev = list(data["ELEV"])
 
+
 def color_producer(elevation):
     if elevation <1800:
         return "green"
@@ -14,9 +15,11 @@ def color_producer(elevation):
     else:
         return "red"
 
+
 map = folium.Map(location=[38.58, -99.09], zoom_start=6, titles="Stamen Terrian")
 
 fgv = folium.FeatureGroup(name="Volcanoes")
+
 
 for lt, ln, el in zip(lat, lon, elev):
     fgv.add_child(folium.CircleMarker(location=[lt, ln], radius='7', popup=str(el)+" m", fill_color=color_producer(el,), color='grey', fill_opacity=0.7))
